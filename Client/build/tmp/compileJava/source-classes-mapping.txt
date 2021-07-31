@@ -1,0 +1,10 @@
+GUI/VerificatorPage.java
+ GUI.VerificatorPage
+GUI/UtilizatorExternPage.java
+ GUI.UtilizatorExternPage
+StartRpcClientFX.java
+ StartRpcClientFX
+GUI/ProgramatorPage.java
+ GUI.ProgramatorPage
+GUI/LoginPage.java
+ GUI.LoginPage

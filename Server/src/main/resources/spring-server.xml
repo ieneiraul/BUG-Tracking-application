@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="configLocation">
+                  <value>classpath:hibernate.cfg.xml</value>
+        </property>
+    </bean>
+
+
+    <bean id="repoUserDB" class="repos.jdbc.RepositoryUserDB">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+    <bean id="repositoryUtilizatorExternDB" class="repos.jdbc.RepositoryUtilizatorExternDB">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+    <bean id="repoVerificatorDB" class="repos.jdbc.RepositoryVerificatorDB">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+    <bean id="repoProgramatorDB" class="repos.jdbc.RepositoryProgramatorDB">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+    <bean id="repoBUGDB" class="repos.jdbc.RepositoryBUGDB">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+
+
+    <bean id="monitorizareService" class="server.ServerImplementation">
+        <constructor-arg ref="repoUserDB"/>
+        <constructor-arg ref="repositoryUtilizatorExternDB"/>
+        <constructor-arg ref="repoVerificatorDB"/>
+        <constructor-arg ref="repoProgramatorDB"/>
+        <constructor-arg ref="repoBUGDB"/>
+    </bean>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+
+        <property name="serviceName" value="Monitorizare"/>
+        <property name="service" ref="monitorizareService"/>
+        <property name="serviceInterface" value="services.ServerInterface"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+
+
+
+</beans>

@@ -1,0 +1,14 @@
+model/StatusBug.java
+ model.StatusBug
+model/User.java
+ model.User
+model/HasID.java
+ model.HasID
+model/BUG.java
+ model.BUG
+model/Programator.java
+ model.Programator
+model/Verificator.java
+ model.Verificator
+model/UtilizatorExtern.java
+ model.UtilizatorExtern
