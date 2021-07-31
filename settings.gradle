@@ -1,0 +1,7 @@
+rootProject.name = 'ISSUrmarireBuguri'
+include 'Client'
+include 'Model'
+include 'Persistance'
+include 'Server'
+include 'Services'
+
